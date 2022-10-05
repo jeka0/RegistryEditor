@@ -39,10 +39,10 @@ namespace RegistryEditor2
             String value = textBox2.Text.Trim();
             if (!String.IsNullOrEmpty(name) && !registryKey.GetValueNames().Contains(name))
             {
-                if (ValidateValue(value))
+                if (ValidateValue(value,comboBox1.Text, out object result))
                 {
                     Name = name;
-                    Value = GetValue(comboBox1.Text, value);
+                    Value = result;
                     this.DialogResult = DialogResult.OK;
                 }
                 else errorProvider2.SetError(textBox2,"Значение параметра не соответствует выбранному типу!!!!");
@@ -60,18 +60,25 @@ namespace RegistryEditor2
                 default: return value;
             }
         }
-        private bool ValidateValue(String value)
+        private bool ValidateValue(String value, String Type, out object result)
         {
-            switch (value)
+            try
             {
-                case "Binary":
-                    String[] strs = value.Split(" ");
-                    foreach (String str in strs) { if (str.Length != 2) return false; }
-                    return true;
-                case "DWord": return true;
-                case "QWord": return true;
-                default: return true;
+                switch (Type)
+                {
+                    case "Binary":
+                        if (String.IsNullOrEmpty(value)) { result = null;return false; }
+                        String[] strs = value.Split(" ");
+                        byte[] bytes = new byte[strs.Length];
+                        for (int i = 0; i < strs.Length; i++) bytes[i] = Convert.ToByte(strs[i].Trim(), 16);
+                        result = bytes;
+                        return true;
+                    case "DWord": result = value; return true;
+                    case "QWord": result = value; return true;
+                    default: result = value; return true;
+                }
             }
+            catch (Exception e) { result = null;return false; }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

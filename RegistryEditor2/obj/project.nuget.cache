@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1Q7xQw70oh1A1e1Q3mGk/jxjPLwUNFSWky5EZsOwXPSV26uVCtRLvqT23efjAnPb3KaWh49xWOIxur8Wcjzcfw==",
+  "dgSpecHash": "rwWN5/AlC1oGIm8h643uMxlduopJX2agV/bt9TUHfWP+zaRZ4AIwoSmDOzu6L5vrgxMwvFdHU36DVn+mMqXXWw==",
   "success": true,
-  "projectFilePath": "D:\\Visual studio\\RegistryEditor2\\RegistryEditor2\\RegistryEditor2.csproj",
+  "projectFilePath": "D:\\Visual studio\\RegistryEditor\\RegistryEditor2\\RegistryEditor2.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -6,8 +6,8 @@
       "version": "5.0.0"
     },
     "additionalProbingPaths": [
-      "C:\\Users\\jeka\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\jeka\\.nuget\\packages"
+      "C:\\Users\\latos\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\latos\\.nuget\\packages"
     ],
     "configProperties": {
       "Microsoft.NETCore.DotNetHostPolicy.SetAppPaths": true

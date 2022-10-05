@@ -8,19 +8,19 @@
     "net5.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\jeka\\.nuget\\packages\\": {}
+    "C:\\Users\\latos\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Visual studio\\RegistryEditor2\\RegistryEditor2\\RegistryEditor2.csproj",
+      "projectUniqueName": "D:\\Visual studio\\RegistryEditor\\RegistryEditor2\\RegistryEditor2.csproj",
       "projectName": "RegistryEditor2",
-      "projectPath": "D:\\Visual studio\\RegistryEditor2\\RegistryEditor2\\RegistryEditor2.csproj",
-      "packagesPath": "C:\\Users\\jeka\\.nuget\\packages\\",
-      "outputPath": "D:\\Visual studio\\RegistryEditor2\\RegistryEditor2\\obj\\",
+      "projectPath": "D:\\Visual studio\\RegistryEditor\\RegistryEditor2\\RegistryEditor2.csproj",
+      "packagesPath": "C:\\Users\\latos\\.nuget\\packages\\",
+      "outputPath": "D:\\Visual studio\\RegistryEditor\\RegistryEditor2\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\jeka\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\latos\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -63,7 +63,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }
