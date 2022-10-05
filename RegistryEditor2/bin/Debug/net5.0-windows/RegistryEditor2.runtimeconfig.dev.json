@@ -1,8 +1,8 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "C:\\Users\\jeka\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\jeka\\.nuget\\packages"
+      "C:\\Users\\latos\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\latos\\.nuget\\packages"
     ]
   }
 }
