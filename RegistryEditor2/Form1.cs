@@ -19,27 +19,23 @@ namespace RegistryEditor2
         private int currentIndex=-1;
         public Form1()
         {
-            try
-            {
-                RegistryKey key = Registry.ClassesRoot.CreateSubKey(@"AxControls.PMFActiveX");
-                RegistrySecurity rs = new RegistrySecurity();
-                WindowsIdentity id = WindowsIdentity.GetCurrent();
-                rs.AddAccessRule(new RegistryAccessRule(new SecurityIdentifier(WellKnownSidType.AccountDomainUsersSid, id.User.AccountDomainSid), RegistryRights.FullControl, AccessControlType.Allow));
-                key.SetAccessControl(rs);
-            }
-            catch (Exception e) { }
+            RegistryKey key = Registry.ClassesRoot.CreateSubKey(@"AxControls.PMFActiveX");
+            RegistrySecurity rs = new RegistrySecurity();
+            WindowsIdentity id = WindowsIdentity.GetCurrent();
+            rs.AddAccessRule(new RegistryAccessRule(new SecurityIdentifier(WellKnownSidType.AccountDomainUsersSid, id.User.AccountDomainSid), RegistryRights.FullControl, AccessControlType.Allow));
+            key.SetAccessControl(rs);
             InitializeComponent();
             tree = new Tree(new Node(null, treeView1.Nodes.Add("Компьютер"),null));
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            dataGridView1.AllowUserToAddRows = false;
             tree.BaseNode.subNodes.Add(Registry.ClassesRoot.Name,new Node(tree.BaseNode, treeView1.Nodes[0].Nodes.Add(Registry.ClassesRoot.Name), Registry.ClassesRoot));
             tree.BaseNode.subNodes.Add(Registry.CurrentUser.Name,new Node(tree.BaseNode, treeView1.Nodes[0].Nodes.Add(Registry.CurrentUser.Name), Registry.CurrentUser));
             tree.BaseNode.subNodes.Add(Registry.LocalMachine.Name,new Node(tree.BaseNode, treeView1.Nodes[0].Nodes.Add(Registry.LocalMachine.Name), Registry.LocalMachine));
             tree.BaseNode.subNodes.Add(Registry.Users.Name,new Node(tree.BaseNode, treeView1.Nodes[0].Nodes.Add(Registry.Users.Name), Registry.Users));
-            tree.BaseNode.subNodes.Add(Registry.CurrentConfig.Name,new Node(tree.BaseNode, treeView1.Nodes[0].Nodes.Add(Registry.CurrentConfig.Name), Registry.CurrentConfig));
-            //tree.BaseNode.subNodes.Add(Registry.PerformanceData.Name, new Node(tree.BaseNode, treeView1.Nodes[0].Nodes.Add(Registry.PerformanceData.Name), Registry.PerformanceData));
+            tree.BaseNode.subNodes.Add(Registry.CurrentConfig.Name,new Node(tree.BaseNode, treeView1.Nodes[0].Nodes.Add(Registry.CurrentConfig.Name), Registry.CurrentConfig));           
             treeView1.Nodes[0].Expand();
         }
 
@@ -63,11 +59,30 @@ namespace RegistryEditor2
                 foreach (String str in values)
                 {
                     RegistryValueKind kind = node.registryKey.GetValueKind(str);
-                    dataGridView1.Rows.Add(str, kind, node.registryKey.GetValue(str));
+                    String value = getStringByType(kind, node.registryKey.GetValue(str));
+                    dataGridView1.Rows.Add(str, kind, value);
                 }
             }
         }
-
+        private String getStringByType(RegistryValueKind kind, object value)
+        {
+            switch(kind)
+            {
+                case RegistryValueKind.Binary:
+                    StringBuilder result = new StringBuilder();
+                    foreach (byte b in (byte[])value) result.Append(Convert.ToString(b, 16)+" ");
+                    return result.ToString();
+                case RegistryValueKind.DWord:
+                case RegistryValueKind.QWord:
+                    try
+                    {
+                        String resultStr;
+                        if (kind == RegistryValueKind.DWord) resultStr = Convert.ToString((Int32)value, 16); else resultStr = Convert.ToString((Int64)value, 16);
+                        return "0x" + resultStr + " (" + value + ")";
+                    }catch(Exception e) { return "Недопустимый параметр Dword"; }
+                default: return value.ToString();
+            }
+        }
         private void removeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (treeView1.SelectedNode != null)
@@ -110,7 +125,7 @@ namespace RegistryEditor2
             if (treeView1.SelectedNode != null)
             {
                 Node node = tree.findNodeByPath(treeView1.SelectedNode.FullPath);
-                EnterName enterName = new EnterName(node);
+                EnterName enterName = new EnterName(node.parentNode);
                 enterName.ShowDialog();
                 if (enterName.DialogResult == DialogResult.OK && enterName.Name != null)
                 {
@@ -133,7 +148,9 @@ namespace RegistryEditor2
                     {
                         String name = addFile.Name;
                         node.registryKey.SetValue(name, addFile.Value);
-                        dataGridView1.Rows.Add(name, node.registryKey.GetValueKind(name), node.registryKey.GetValue(name));
+                        RegistryValueKind kind = node.registryKey.GetValueKind(name);
+                        String value = getStringByType(kind, node.registryKey.GetValue(name));
+                        dataGridView1.Rows.Add(name, kind, value);
                     }
                 }
             }
@@ -160,6 +177,31 @@ namespace RegistryEditor2
         private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
             currentIndex = e.RowIndex;
+        }
+
+        private void changeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (treeView1.SelectedNode != null)
+            {
+                Node node = tree.findNodeByPath(treeView1.SelectedNode.FullPath);
+                if (node != null && node.registryKey != null && currentIndex != -1)
+                {
+                    String NAME = dataGridView1.Rows[currentIndex].Cells[0].Value.ToString();
+                    AddFile addFile = new AddFile(node.registryKey,NAME);
+                    addFile.ShowDialog();
+                    if (addFile.DialogResult == DialogResult.OK && addFile.Name != null && addFile.Value != null)
+                    {
+                        String name = addFile.Name;
+                        node.registryKey.DeleteValue(dataGridView1.Rows[currentIndex].Cells[0].Value.ToString());
+                        dataGridView1.Rows.RemoveAt(currentIndex);
+                        node.registryKey.SetValue(name, addFile.Value);
+                        RegistryValueKind kind = node.registryKey.GetValueKind(name);
+                        String value = getStringByType(kind, node.registryKey.GetValue(name));
+                        dataGridView1.Rows.Add(name, kind, value);
+                    }
+                }
+                currentIndex = -1;
+            }
         }
     }
 }

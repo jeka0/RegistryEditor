@@ -56,10 +56,9 @@ namespace RegistryEditor2
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.treeView1.ContextMenuStrip = this.contextMenuStrip1;
-            this.treeView1.Location = new System.Drawing.Point(14, 16);
-            this.treeView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.treeView1.Location = new System.Drawing.Point(12, 12);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(285, 567);
+            this.treeView1.Size = new System.Drawing.Size(250, 426);
             this.treeView1.TabIndex = 0;
             this.treeView1.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView1_BeforeExpand);
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
@@ -73,7 +72,7 @@ namespace RegistryEditor2
             this.removeToolStripMenuItem,
             this.renameToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(133, 76);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(118, 70);
             // 
             // addToolStripMenuItem
             // 
@@ -81,34 +80,34 @@ namespace RegistryEditor2
             this.addSectionToolStripMenuItem,
             this.ddParameterToolStripMenuItem});
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(132, 24);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.addToolStripMenuItem.Text = "Add";
             // 
             // addSectionToolStripMenuItem
             // 
             this.addSectionToolStripMenuItem.Name = "addSectionToolStripMenuItem";
-            this.addSectionToolStripMenuItem.Size = new System.Drawing.Size(193, 26);
+            this.addSectionToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.addSectionToolStripMenuItem.Text = "Add Section";
             this.addSectionToolStripMenuItem.Click += new System.EventHandler(this.addSectionToolStripMenuItem_Click);
             // 
             // ddParameterToolStripMenuItem
             // 
             this.ddParameterToolStripMenuItem.Name = "ddParameterToolStripMenuItem";
-            this.ddParameterToolStripMenuItem.Size = new System.Drawing.Size(193, 26);
+            this.ddParameterToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.ddParameterToolStripMenuItem.Text = "Add parameter";
             this.ddParameterToolStripMenuItem.Click += new System.EventHandler(this.addParameterToolStripMenuItem_Click);
             // 
             // removeToolStripMenuItem
             // 
             this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
-            this.removeToolStripMenuItem.Size = new System.Drawing.Size(132, 24);
+            this.removeToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.removeToolStripMenuItem.Text = "Remove";
             this.removeToolStripMenuItem.Click += new System.EventHandler(this.removeToolStripMenuItem_Click);
             // 
             // renameToolStripMenuItem
             // 
             this.renameToolStripMenuItem.Name = "renameToolStripMenuItem";
-            this.renameToolStripMenuItem.Size = new System.Drawing.Size(132, 24);
+            this.renameToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.renameToolStripMenuItem.Text = "Rename";
             this.renameToolStripMenuItem.Click += new System.EventHandler(this.renameToolStripMenuItem_Click);
             // 
@@ -127,15 +126,14 @@ namespace RegistryEditor2
             this.value});
             this.dataGridView1.ContextMenuStrip = this.contextMenuStrip2;
             this.dataGridView1.GridColor = System.Drawing.Color.White;
-            this.dataGridView1.Location = new System.Drawing.Point(306, 16);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dataGridView1.Location = new System.Drawing.Point(268, 12);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 25;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(594, 567);
+            this.dataGridView1.Size = new System.Drawing.Size(520, 425);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDown);
             // 
@@ -146,7 +144,7 @@ namespace RegistryEditor2
             this.Name.MinimumWidth = 6;
             this.Name.Name = "Name";
             this.Name.ReadOnly = true;
-            this.Name.Width = 78;
+            this.Name.Width = 64;
             // 
             // Type
             // 
@@ -155,7 +153,7 @@ namespace RegistryEditor2
             this.Type.MinimumWidth = 6;
             this.Type.Name = "Type";
             this.Type.ReadOnly = true;
-            this.Type.Width = 69;
+            this.Type.Width = 56;
             // 
             // value
             // 
@@ -164,7 +162,7 @@ namespace RegistryEditor2
             this.value.MinimumWidth = 6;
             this.value.Name = "value";
             this.value.ReadOnly = true;
-            this.value.Width = 73;
+            this.value.Width = 60;
             // 
             // contextMenuStrip2
             // 
@@ -174,36 +172,36 @@ namespace RegistryEditor2
             this.removeToolStripMenuItem1,
             this.changeToolStripMenuItem});
             this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(180, 76);
+            this.contextMenuStrip2.Size = new System.Drawing.Size(181, 92);
             // 
             // addParameterToolStripMenuItem
             // 
             this.addParameterToolStripMenuItem.Name = "addParameterToolStripMenuItem";
-            this.addParameterToolStripMenuItem.Size = new System.Drawing.Size(179, 24);
+            this.addParameterToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addParameterToolStripMenuItem.Text = "Add parameter";
             this.addParameterToolStripMenuItem.Click += new System.EventHandler(this.addParameterToolStripMenuItem_Click);
             // 
             // removeToolStripMenuItem1
             // 
             this.removeToolStripMenuItem1.Name = "removeToolStripMenuItem1";
-            this.removeToolStripMenuItem1.Size = new System.Drawing.Size(179, 24);
+            this.removeToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.removeToolStripMenuItem1.Text = "Remove";
             this.removeToolStripMenuItem1.Click += new System.EventHandler(this.removeToolStripMenuItem1_Click);
             // 
             // changeToolStripMenuItem
             // 
             this.changeToolStripMenuItem.Name = "changeToolStripMenuItem";
-            this.changeToolStripMenuItem.Size = new System.Drawing.Size(179, 24);
+            this.changeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.changeToolStripMenuItem.Text = "Change";
+            this.changeToolStripMenuItem.Click += new System.EventHandler(this.changeToolStripMenuItem_Click);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(914, 600);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.treeView1);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             //this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);

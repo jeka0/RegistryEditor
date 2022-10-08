@@ -13,7 +13,7 @@ namespace RegistryEditor2
         public RegistryKey registryKey;
         private TreeNode TreeNode;
         private String[] strs;
-        private Node parentNode;
+        public Node parentNode;
         public Dictionary<String, Node> subNodes;
         public Node(Node parentNode, TreeNode TreeNode, RegistryKey registryKey)
         {
@@ -60,9 +60,10 @@ namespace RegistryEditor2
         public void Open()
         {
             strs = registryKey.GetSubKeyNames();
-            if (strs != null && subNodes.Count == 0)
+            if (strs != null && (subNodes.Count==0 || strs.Length!= TreeNode.Nodes.Count))
             {
                 TreeNode.Nodes.Clear();
+                subNodes.Clear();
                 foreach (String str in strs)
                 {
 
